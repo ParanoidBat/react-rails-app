@@ -10,10 +10,11 @@ function ShowUser(props){
     }
   } = props;
 
-  const url = `/show/${id}`;
+  const showUrl = `/show/${id}`;
+  const deleteUrl = `/destroy/${id}`;
 
   useEffect(() => {
-    fetch(url).then(res => {
+    fetch(showUrl).then(res => {
       if (res.ok){
         return res.json();
       }
@@ -24,10 +25,34 @@ function ShowUser(props){
       props.history.push("/users")
     })
   }, [stateUser.username]);
+
+  const deleteUser = function(){
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    
+    fetch(deleteUrl, {
+      method: "DELETE",
+      headers: {
+        "X-CSRF-Token": token,
+        "Content-Type": "application/json"
+      }
+    }).then(res => {
+      if (res.ok){
+        return res.json();
+      }
+      throw new Error("Nai bhai. nai karna delete");
+    })
+    .then(function(){
+      props.history.push("/users")
+    })
+    .catch(error => console.log(error))
+  }
   
   return(
     <>
-      {stateUser.username}
+    <h2>{stateUser.username}</h2>
+    <button type="button" onClick={deleteUser}>Delete</button>
+    <br/>
+    <Link to="/users">All Users</Link>
     </>
   )
 }
