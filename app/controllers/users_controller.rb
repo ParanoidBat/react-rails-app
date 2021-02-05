@@ -16,6 +16,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    user = User.find(params[:id])
+
+    if user
+      render json: user
+    else
+      render json: user.errors
+    end
   end
 
   def destroy

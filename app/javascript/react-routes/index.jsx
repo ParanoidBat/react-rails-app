@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from '../components/Home'
 import NewUserForm from '../components/NewUserForm'
 import Users from '../components/Users'
+import ShowUser from '../components/ShowUser'
 
 export default (
   <Router>
@@ -11,6 +12,7 @@ export default (
       <Route path="/" exact component={Home} />
       <Route path="/new" exact component={NewUserForm} />
       <Route path="/users" exact component={Users} />
+      <Route path="/user/:id" exact component={ShowUser} />
     </Switch>
   </Router>
 );

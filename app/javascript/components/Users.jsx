@@ -20,15 +20,23 @@ const Users = function(props){
   }, [stateUsers.length]);
 
   return(
-    <div>
-      {stateUsers.map((user) => (
-        <ul>
-          <li key={user.id}>
-            {user.username}
-          </li>
-        </ul>
-      ))}
-    </div>
+    <>
+      <div>
+        {stateUsers.map((user) => (
+          <ul>
+            <li key={user.id}>
+              {user.username}
+              <br/>
+              <Link to={`/user/${user.id}`}>Show</Link>
+            </li>
+          </ul>
+        ))}
+      </div>
+
+      <Link to="/">Home</Link>
+      <br/>
+      <Link to="/new">Create New</Link>
+    </>
   )
 }
 
