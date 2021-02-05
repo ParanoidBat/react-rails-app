@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'users/create'
   get '/show/:id', to: 'users#show'
   delete '/destroy/:id', to: "users#destroy"
+  put '/show/:id', to: 'users#update'
 
   get '/*path', to: 'pages#index'
 end

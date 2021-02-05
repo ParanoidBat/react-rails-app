@@ -5,6 +5,7 @@ import Home from '../components/Home'
 import NewUserForm from '../components/NewUserForm'
 import Users from '../components/Users'
 import ShowUser from '../components/ShowUser'
+import EditUserForm from '../components/EditUserForm'
 
 export default (
   <Router>
@@ -13,6 +14,7 @@ export default (
       <Route path="/new" exact component={NewUserForm} />
       <Route path="/users" exact component={Users} />
       <Route path="/user/:id" exact component={ShowUser} />
+      <Route path="/user/:id/edit" exact component={EditUserForm} />
     </Switch>
   </Router>
 );
