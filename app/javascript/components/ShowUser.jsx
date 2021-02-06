@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 function ShowUser(props){
   const [stateUser, setUser] = useState({user: {username: ""}})
 
+  // the id is sent in props
   const {
     match: {
       params: {id}
@@ -13,6 +14,7 @@ function ShowUser(props){
   const showUrl = `/show/${id}`;
   const deleteUrl = `/destroy/${id}`;
 
+  // when component is mounted. get user data through rails API
   useEffect(() => {
     fetch(showUrl).then(res => {
       if (res.ok){
@@ -24,7 +26,7 @@ function ShowUser(props){
     .catch(function(){
       props.history.push("/users")
     })
-  }, [stateUser.username]);
+  }, [stateUser.username]); // do not reuse the hook if username hasn't changed
 
   const deleteUser = function(){
     const token = document.querySelector('meta[name="csrf-token"]').content;

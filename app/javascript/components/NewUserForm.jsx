@@ -5,6 +5,7 @@ const NewUserForm = (props) => {
   const [stateUsername, setUsername] = useState('')
   const [statePassword, setPassword] = useState('')
 
+  // method to reflect the changes made in DOM onto the react DOM
   const handleChange = (e) => {
     if (e.target.name == "password"){
       setPassword(e.target.value);
@@ -25,7 +26,7 @@ const NewUserForm = (props) => {
         password: statePassword
       }
     };
-
+    // rails requires an authenticity token with forms
     const token = document.querySelector('meta[name="csrf-token"]').content;
       
       fetch(url, {

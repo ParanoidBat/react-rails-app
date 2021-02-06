@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  # data retrieved through queries is sent as json to react components
+  
   def index
     users = User.all
 

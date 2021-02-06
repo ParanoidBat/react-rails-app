@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from "react";
 
+// custom hook to manage user authentication
+
 export default function useToken(){
   const getToken = () => {
     const token = sessionStorage.getItem('token');
