@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   delete '/destroy/:id', to: "users#destroy"
   put '/show/:id', to: 'users#update'
 
+  post '/login', to: 'sessions#create'
+
   get '/*path', to: 'pages#index'
 end

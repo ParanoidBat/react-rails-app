@@ -7,5 +7,10 @@ export default ()=> (
     <Link to ="/new">Create New User</Link>
     <br/>
     <Link to="/users">Show Users</Link>
+    <br/>
+    <button type="button" onClick={() => {
+      sessionStorage.removeItem('token')
+      }}>
+      Logout</button>
   </div>
 )
