@@ -1,15 +1,16 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-export default ()=> (
+export default (props)=> (
   <div>
     <h2>Good hogya g</h2>
-    <Link to ="/new">Create New User</Link>
+    <Link to ="/new" className="text-decoration-none">Create New User</Link>
     <br/>
-    <Link to="/users">Show Users</Link>
+    <Link to="/users" className="text-decoration-none">Show Users</Link>
     <br/>
     <button type="button" onClick={() => {
-      sessionStorage.removeItem('token')
+      sessionStorage.removeItem('token');
+      props.history.push('/login')
       }}>
       Logout</button>
   </div>
