@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom';
 
-const NewUserForm = (props) => {
+const EditUserForm = (props) => {
   const [stateUsername, setUsername] = useState('')
   const {id} = props.match.params;
 
   useEffect(() => {
     let url = `/show/${id}`;
-
     fetch(url).then(res => {
       if (res.ok){
         return res.json();
@@ -22,8 +21,8 @@ const NewUserForm = (props) => {
 
   const handleChange = (e) => {
     if(e.target.name == "username"){
-      setUsername(e.target.value)
     }
+    setUsername(e.target.value)
   }
 
   const handleSubmit = (e) => {
@@ -72,4 +71,4 @@ const NewUserForm = (props) => {
   );
 }
 
-export default NewUserForm;
+export default EditUserForm;
