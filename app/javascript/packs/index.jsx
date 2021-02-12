@@ -7,10 +7,14 @@
 import React from 'react'
 import {render} from 'react-dom'
 import App from '../components/App'
+import { ApolloProvider } from 'react-apollo';
+import { createCache, createClient } from '../utils/apollo';
 
 document.addEventListener('DOMContentLoaded', () => {
   render(
-    <App />,
+    <ApolloProvider client={createClient(createCache())}>
+      <App />
+    </ApolloProvider>,
     document.body.appendChild(document.createElement('div'))
   );
 })
