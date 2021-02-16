@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-
+  before_action :current_user
   # data retrieved through queries is sent as json to react components
   
   def index
     users = User.all
-
     render json: users
   end
 
@@ -13,6 +12,7 @@ class UsersController < ApplicationController
 
     if user.save
       render json: user
+      session[:user_id] = user.id
     else
       render json: user.errors
     end
@@ -32,6 +32,10 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
 
     user.destroy
+    
+    if session[:user_id]
+      session[:user_id] = nil
+    end
 
     render json: {message: "Deleted"}
   end

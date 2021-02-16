@@ -1,22 +1,20 @@
 module Mutations
-  class AddUser < Mutations::BaseMutation
-    argument :params, Types::Input::UserInputType, required: true
+  class AddUser < BaseMutation
+    argument :username, String , required: true
+    argument :password, String , required: true
 
-    field :user, Types::UserType, null: false
+    type Types::UserType
+    def resolve(username:, password:)
+      # user_params = Hash params
 
-    def resolve(params:)
-      byebug
-      user_params = Hash params
+      # begin
+      user = User.create!(username: username, password: password)
 
-      begin
-        user = User.create!(user_params)
-
-        { user: user }
-
-      rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
-        "#{e.record.errors.full_messages.join(', ')}")
-      end
+      # rescue ActiveRecord::RecordInvalid => e
+      #   GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}:"\
+      #   "#{e.record.errors.full_messages.join(', ')}")
+      # end
+      user
     end
   end
 end
