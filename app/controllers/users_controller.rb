@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :current_user
+  # before_action :current_user
   # data retrieved through queries is sent as json to react components
   
   def index

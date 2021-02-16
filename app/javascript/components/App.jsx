@@ -13,8 +13,8 @@ export default (props) => {
 
   // render the react routes
   return(
-    <>
+    <div className="container-fluid">
       {Routes}
-    </>
+    </div>
   );
 }

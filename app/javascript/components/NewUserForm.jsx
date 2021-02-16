@@ -15,10 +15,11 @@ const AddUser = gql`
 const NewUserForm = (props) => {
   const [stateUsername, setUsername] = useState('')
   const [statePassword, setPassword] = useState('')
-  const [createUser, { laoding, error }] = useMutation(AddUser);
+  const [createUser, userResponse ] = useMutation(AddUser);
 
   // method to reflect the changes made in HTML DOM onto the react DOM
   const handleChange = (e) => {
+    console.log(e);
     if (e.target.name == "password"){
       setPassword(e.target.value);
     }
@@ -30,7 +31,16 @@ const NewUserForm = (props) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    createUser({ variables: { username: stateUsername, password: statePassword } });
+    createUser({ variables: { username: stateUsername, password: statePassword } })
+    .then(res => {
+      if (res.data){
+        props.history.push(`/user/${res.data.addUser.id}`)
+      }
+      throw new Error("Ye to lol hogya");
+    })
+    .catch(err => console.log(err));
+
+    // !loading && !error && props.history.push(`/user/${data.addUser.id}`)
   }
 
   // const handleSubmit = (e) => {

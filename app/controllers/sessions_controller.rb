@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :current_user
+  # before_action :current_user
   # login user. logout is implemented in react component: Home
   def create
     user = User.find_by(username: params[:session][:username])

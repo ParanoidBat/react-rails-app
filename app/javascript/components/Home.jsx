@@ -5,7 +5,6 @@ export default (props)=> {
   const [loggedin, setloggedin] = useState(true);
 
   useEffect(()=>{
-    console.log("im coming!");
     if(sessionStorage.getItem('token') !== null){
       setloggedin(true);
     }
@@ -18,7 +17,7 @@ export default (props)=> {
       <br/>
       <Link to="/users" className="text-decoration-none">Show Users</Link>
       <br/>
-      { loggedin && <button type="button" onClick={() => {
+      { loggedin && <button type="button" className="btn btn-warning" onClick={() => {
         sessionStorage.removeItem('token');
         props.history.push('/')
         setloggedin(false);
