@@ -52,9 +52,9 @@ function ShowUser(props){
   return(
     <>
     <h2>{stateUser.username}</h2>
-    <button type="button" onClick={deleteUser}>Delete</button>
+    <button type="button" className="btn btn-danger mb-1" onClick={deleteUser}>Delete</button>
     <br/>
-    <Link to="/users">All Users</Link>
+    <Link to="/users" className="btn btn-primary mb-1">All Users</Link>
     </>
   )
 }

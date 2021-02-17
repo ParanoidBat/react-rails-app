@@ -80,15 +80,17 @@ const NewUserForm = (props) => {
   return(
     <>
       <form onSubmit={handleSubmit}>
-        <div>
-          <input type="text" name="username" onChange={handleChange} required />
+        <div className="mb-2">
+          <label htmlFor="username" className="form-label">Username</label>
+          <input type="text" name="username" id="username" className="form-control" onChange={handleChange} required />
         </div>
-        <div>
-          <input type="password" name="password" onChange={handleChange} required />
+        <div className="mb-2">
+          <label htmlFor="password">Password</label>
+          <input type="password" name="password" id="password" className="form-control" onChange={handleChange} required />
         </div>
-        <button type="submit">Jan dyo</button>
+        <button type="submit" className="btn btn-success mb-1">Jan dyo</button>
       </form>
-      <Link to="/">Home</Link>
+      <Link to="/" className="btn btn-primary mb-1">Home</Link>
     </>
   );
 }

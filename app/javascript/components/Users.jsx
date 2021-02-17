@@ -65,17 +65,18 @@ export default ()=> {
   }
 
   return (
-    <>
+    <div className="row">
       {loading? 'loading' : data.fetchUsers.map((user)=>(
         <div className="m-2" key={user.id}>
-          {user.username}
+          <Link to={`/user/${user.id}`} className="text-decoration-none text-dark"> <em> {user.username} </em> </Link>
         </div>
       ))}
 
       <div>
-        <Link to="/">Home</Link>
-        <Link to="/new">Create new</Link>
+        <Link to="/" className="btn btn-primary mb-1">Home</Link>
+        <br/>
+        <Link to="/new" className="btn btn-success mb-1">Create new</Link>
       </div>
-    </>
+    </div>
   );
 }

@@ -13,11 +13,12 @@ export default (props)=> {
   return(
     <div>
       <h2>Good hogya g</h2>
-      <Link to ="/new" className="text-decoration-none">Create New User</Link>
+      <Link to ="/new" className="btn btn-success mb-1">Create New User</Link>
       <br/>
-      <Link to="/users" className="text-decoration-none">Show Users</Link>
+      <Link to="/users" className="btn btn-info mb-1">Show Users</Link>
       <br/>
-      { loggedin && <button type="button" className="btn btn-warning" onClick={() => {
+
+      { loggedin && <button type="button" className="btn btn-warning mb-1" onClick={() => {
         sessionStorage.removeItem('token');
         props.history.push('/')
         setloggedin(false);
