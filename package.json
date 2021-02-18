@@ -26,7 +26,19 @@
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch"
+  },
+  "jest": {
+    "roots": [
+      "test/javascript"
+    ]
+  },
   "devDependencies": {
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "regenerator-runtime": "^0.13.7",
     "webpack-dev-server": "^3.11.2"
   }
 }
